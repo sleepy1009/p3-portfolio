@@ -11,7 +11,7 @@ export const PROFILE = {
     //{ label: 'Experience', value: '< 1 year' },
   ],
 
-  email: 'blockmine223@gmail.com',
+  email: 'cuongpq2004.it@gmail.com',
 
   links: {
     cv: '/cv.pdf', // public/cv.pdf
