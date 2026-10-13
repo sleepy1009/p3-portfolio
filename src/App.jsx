@@ -14,6 +14,8 @@ import Shards from './components/fx/Shards';
 import CommandHint from './components/controls/CommandHint';
 import CursorFX from './components/fx/CursorFX';
 import QualityButton from './components/controls/QualityButton';
+import useIsMobile from './hooks/useIsMobile';
+import MobileShell from './components/mobile/MobileShell';
 
 const SECTIONS = {
   profile: Profile,
@@ -24,6 +26,7 @@ const SECTIONS = {
 };
 
 export default function App() {
+  const isMobile = useIsMobile();
   const [activeId, setActiveId] = useState(MENU_ITEMS[0].id);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
 
@@ -36,6 +39,20 @@ export default function App() {
 
   const active = MENU_ITEMS.find((item) => item.id === activeId);
   const Section = SECTIONS[active.section];
+
+  const content = (
+    <div key={activeId} className="animate-sharp-enter w-full">
+      <Section isFirstLoad={isFirstLoad} />
+    </div>
+  );
+
+  if (isMobile) {
+    return (
+      <MobileShell items={MENU_ITEMS} activeId={activeId} onSelect={setActiveId}>
+        {content}
+      </MobileShell>
+    );
+  }
 
   return (
     <div className={`relative h-screen w-screen overflow-hidden `}>
@@ -51,9 +68,7 @@ export default function App() {
         style={{ left: 'var(--content-left)' }}
       >
         <div className="intro-content flex min-h-full items-start px-[2.4vw] pb-10 pt-[6vh]">
-          <div key={activeId} className="animate-sharp-enter w-full">
-            <Section isFirstLoad={isFirstLoad} />
-          </div>
+          {content}
         </div>
       </main>
 

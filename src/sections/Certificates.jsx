@@ -5,7 +5,6 @@ import { GLASS_OUTLINES, GLASS_CRACKS } from '../data/certShapes';
 import SectionHeader from '../components/ui/SectionHeader';
 import useScrollArrows from '../hooks/useScrollArrows';
 
-const VISIBLE = 4;
 const MIN_SLOTS = 6;
 const SLOTS = Array.from({ length: Math.max(MIN_SLOTS, CERTIFICATES.length) }, (_, i) => CERTIFICATES[i] ?? null);
 const pts = (arr) => arr.map((p) => p.join(',')).join(' ');
@@ -28,8 +27,8 @@ function Glass({ index, lit }) {
 }
 
 function Verify({ url }) {
-  if (url) return <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[18px] uppercase leading-none tracking-wide text-accent transition-colors hover:text-title">Verify <ArrowUpRight size={16} /></a>;
-  return <span className="text-[18px] uppercase leading-none tracking-wide text-muted/70">Verify on request</span>;
+  if (url) return <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[length:var(--m-cert-verify-fs,18px)] uppercase leading-none tracking-wide text-accent transition-colors hover:text-title">Verify <ArrowUpRight size={16} /></a>;
+  return <span className="text-[length:var(--m-cert-verify-fs,18px)] uppercase leading-none tracking-wide text-muted/70">Verify on request</span>;
 }
 
 function CertSlot({ cert, index }) {
@@ -42,13 +41,13 @@ function CertSlot({ cert, index }) {
             <Glass index={index} lit={lit} />
           </div>
           {lit ? (
-            <div className="ct-text relative z-10 flex h-full items-center gap-4 px-6 py-2">
+            <div className="ct-text relative z-10 flex h-full items-center gap-3 px-5 py-2 md:gap-4 md:px-6">
               <div className="min-w-0 flex-1">
-                <h3 className="truncate text-[24px] leading-none text-title">{cert.name}</h3>
-                <p className="mt-1 truncate text-[18px] leading-none text-muted">{cert.issuer} · {cert.date}</p>
+                <h3 className="line-clamp-2 text-[length:var(--m-cert-name-fs,24px)] leading-[1.05] text-title md:truncate md:leading-none">{cert.name}</h3>
+                <p className="mt-1 text-[length:var(--m-cert-meta-fs,18px)] leading-[1.1] text-muted md:truncate md:leading-none">{cert.issuer} · {cert.date}</p>
               </div>
               <div className="shrink-0 text-right">
-                <p className="text-[24px] leading-none text-accent">{cert.score} {cert.unit && <span className="text-[26px] text-muted">{cert.unit}</span>}</p>
+                <p className="text-[length:var(--m-cert-score-fs,24px)] leading-none text-accent">{cert.score} {cert.unit && <span className="text-[length:var(--m-cert-score-fs-u,26px)] text-muted">{cert.unit}</span>}</p>
                 <div className="mt-1"><Verify url={cert.verify} /></div>
               </div>
             </div>
@@ -71,7 +70,7 @@ export default function Certificates({ isFirstLoad }) {
       <SectionHeader title="Certificates" titleStart={titleStart} />
 
       <div className="relative">
-        <ul ref={listRef} onScroll={updateArrow} className="ct-scroll snap-y snap-mandatory overflow-y-auto px-2 pt-1 font-content" style={{ scrollPaddingTop: 4, height: `calc(${VISIBLE} * (var(--ct-item-h) + var(--ct-gap)) + var(--ct-peek) + 4px)` }}>
+        <ul ref={listRef} onScroll={updateArrow} className="ct-scroll snap-y snap-mandatory overflow-y-auto px-2 pt-1 font-content" style={{ scrollPaddingTop: 4, height: 'var(--ct-list-h)' }}>
           {SLOTS.map((cert, i) => <CertSlot key={cert?.name ?? `empty-${i}`} cert={cert} index={i} />)}
           <li aria-hidden="true" style={{ height: 'var(--ct-peek)' }} />
         </ul>

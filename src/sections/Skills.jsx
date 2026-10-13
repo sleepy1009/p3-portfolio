@@ -87,10 +87,10 @@ export default function Skills({ isFirstLoad }) {
       <SectionHeader title="Tech Stack" titleStart={titleStart} appendNode={legendNodes} />
 
       <SectionCard className="pr-4">
-        <ul className="space-y-8 font-content">
+        <ul className="space-y-6 font-content md:space-y-8">
           {SKILL_GROUPS.map((group, gi) => (
-            <li key={group.label} className="grid grid-cols-[9rem_1fr] items-start gap-x-0">
-              <span className="text-[22px] font-bold text-role" style={{ lineHeight: `${ICON_FRAME}px` }}>
+            <li key={group.label} className="grid grid-cols-1 items-start gap-y-2 md:grid-cols-[9rem_1fr] md:gap-y-0">
+              <span className="text-[22px] font-bold leading-none text-role md:leading-[44px]">
                 {group.label}
               </span>
               <div className="flex flex-wrap gap-x-4 gap-y-3">

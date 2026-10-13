@@ -7,8 +7,6 @@ import BrokenTag from '../components/ui/BrokenTag';
 import SectionHeader from '../components/ui/SectionHeader';
 import useScrollArrows from '../hooks/useScrollArrows';
 
-const THUMB_W = 180;
-const THUMB_H = 112;
 const BORDER = 2;
 const LIVE_ORBIT = true;
 const ORBIT_ARM = 16;
@@ -23,7 +21,7 @@ function ProjectImage({ project }) {
   const linkProps = hasLive ? { href: project.live, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `Go live: ${project.title}` } : {};
 
   return (
-    <Wrapper {...linkProps} className="group relative block" style={{ width: THUMB_W, height: THUMB_H }}>
+    <Wrapper {...linkProps} className="group relative block aspect-[180/112] w-full max-w-[320px] md:w-[180px]">
       <div className="absolute inset-0 bg-accent/60 transition-colors duration-150 group-hover:bg-accent" style={{ clipPath: clip }}>
         <div className="absolute overflow-hidden bg-card" style={{ inset: BORDER, clipPath: clip }}>
           {failed ? (
@@ -82,8 +80,8 @@ function ProjectItem({ project, index }) {
 
       {live && orbit && size.w > 0 && <Orbit w={size.w} h={size.h} />}
 
-      <div className="pj-in relative z-10 flex h-full gap-6 px-5 py-3">
-        <div className="mt-2 shrink-0" style={{ width: THUMB_W }}>
+      <div className="pj-in relative z-10 flex h-full flex-col gap-3 px-4 py-3 md:flex-row md:gap-6 md:px-5">
+        <div className="mt-2 w-full shrink-0 md:w-[180px]">
           <ProjectImage project={project} />
           <a href={project.repo} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-2 text-[20px] uppercase leading-none tracking-wide text-muted transition-colors hover:text-accent">
             <FaGithub size={20} aria-hidden="true" /> Go repository
@@ -91,7 +89,7 @@ function ProjectItem({ project, index }) {
         </div>
         <div className="flex min-w-0 flex-1 flex-col">
           <h3 className="mt-1 text-[26px] leading-none text-title">{project.title}</h3>
-          <p className="mt-1 line-clamp-5 font-special text-[14px] tracking-wide leading-[1.6] text-muted">{project.desc}</p>
+          <p className="mt-1 font-special md:line-clamp-5 text-[14px] tracking-wide leading-[1.6] text-muted">{project.desc}</p>
           <div className="mt-auto flex flex-wrap gap-2 pt-2 pb-4">
             {project.tech.map((t, k) => <BrokenTag key={t} variant={index + k}>{t}</BrokenTag>)}
           </div>

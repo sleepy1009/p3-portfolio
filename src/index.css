@@ -13,7 +13,8 @@
    10. PROJECTS     : same 9
    11. CERTIFICATES : same 9
    12. Mouse fx
-   13. reduce anim 
+   13. MOBILE       : layout < 768px (biến --m-*, intro tách ngang, override cho Projects/Certificates)
+   14. reduce anim 
    
 ===================================================================== */
 
@@ -266,6 +267,8 @@ body {
   --ct-stagger: 0.12s;
   --ct-text-dur: 0.4s;
 
+  --ct-list-h: calc(4 * (var(--ct-item-h) + var(--ct-gap)) + var(--ct-peek) + 4px);
+
   --ct-lit-fill: var(--color-card);
   --ct-lit-border: var(--color-accent);
   --ct-lit-opacity: 0.8;
@@ -311,13 +314,71 @@ a, button, [role='button'], .cursor-pointer, input {
 }
 
 /* 13 */
+/* ============================================================
+   MOBILE (screen size < 768px)
+   ============================================================ */
+.m-root {
+  --u: calc(min(100vw, 560px) / 390);
+
+  /* shape-top */
+  --m-e1: calc(var(--u) * 120);
+  --m-e2: calc(var(--u) * 80); 
+  --m-out: calc(var(--u) * 8);
+
+  /* menu */
+  --m-menu-top: calc(var(--u) * 84);
+  --m-menu-py: 13px;
+  --m-menu-fs: 14px; 
+  --m-menu-gap: 16px; 
+  --m-skew: 28deg; 
+
+  /* context */
+  --m-card-pl: 24px; 
+  
+  --m-role-fs: 22px;
+
+  --m-viewpf-fs: 14px;
+
+  --m-cert-name-fs: 18px;        
+  --m-cert-meta-fs: 14px;
+  --m-cert-score-fs: 18px;    
+  --m-cert-score-fs-u: 20px;   
+  --m-cert-verify-fs: 14px; 
+
+  --m-email-fs: 16px;       
+  --m-lc-fs: 22px;       
+
+  /* auto estimate */
+  --m-slope: calc(var(--m-e1) - var(--m-e2));
+  --m-split: calc(50dvh - (var(--m-e1) + var(--m-e2)) / 2);
+}
+
+@keyframes m-split-top    { from { transform: translateY(var(--m-split)); } to { transform: translateY(0); } }
+@keyframes m-split-bottom { from { transform: translateY(0); } to { transform: translateY(100dvh); visibility: hidden; } }
+.m-split-top    { animation: m-split-top var(--intro-split-dur) cubic-bezier(0.7, 0, 0.2, 1) var(--intro-split-delay) both; will-change: transform; }
+.m-split-bottom { animation: m-split-bottom var(--intro-split-dur) cubic-bezier(0.7, 0, 0.2, 1) var(--intro-split-delay) both; will-change: transform; }
+
+/* Projects / Certificates */
+@media (max-width: 767.98px) {
+  :root {
+    --pj-item-h: auto;
+    --pj-list-h: auto;
+    --pj-peek: 0px;
+
+    --ct-item-h: 100px;
+    --ct-list-h: auto;
+    --ct-peek: 0px;
+  }
+}
+
+/* 14 */
 @media (prefers-reduced-motion: reduce) {
   .glitch-effect { animation: none; }
   .glitch-v-red, .glitch-v-cyan { animation: none; transform: rotate(-45deg); }
   .crack-line  { animation: none; stroke-dashoffset: 0; }
   .crack-laser { display: none; }
   .shard       { display: none; }
-  .intro-split-left, .intro-split-right, .intro-drop, .intro-rise, .intro-content {
+  .intro-split-left, .intro-split-right, .intro-drop, .intro-rise, .intro-content, .m-split-top, .m-split-bottom {
     animation-duration: 0.001s;
     animation-delay: 0s;
   }

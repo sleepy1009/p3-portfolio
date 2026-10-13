@@ -14,7 +14,7 @@ function Stat({ value, label }) {
   return (
     <div className="border-b-1 border-title/30 py-2">
       <p className="text-[30px] leading-none text-title">{value}</p>
-      <p className="mt-1 text-[16px] uppercase leading-none tracking-wide text-muted">{label}</p>
+      <p className="mt-1 text-[14px] uppercase leading-none tracking-wide text-muted md:text-[16px]">{label}</p>
     </div>
   );
 }
@@ -33,7 +33,7 @@ function EmailRow({ email }) {
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
       <span className={labelClass}>Email:</span>
-      <span className="inline-flex items-center gap-2 text-title/90 text-[24px]">
+      <span className="inline-flex items-center gap-2 text-title/90 text-[length:var(--m-email-fs,24px)]">
         <HiOutlineMail size={22} aria-hidden="true" />
         <span className="break-all">{email}</span>
       </span>
@@ -66,11 +66,11 @@ export default function Contact({ isFirstLoad }) {
       <SectionCard className="pr-4 font-content">
         <section>
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h2 className="flex items-center gap-2 text-[28px] leading-none text-title">
+            <h2 className="flex items-center gap-2 text-[length:var(--m-lc-fs,28px)] leading-none text-title">
               <SiLeetcode size={24} style={{ color: LC.brand }} aria-hidden="true" />
               LeetCode
             </h2>
-            <a href={lc.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[18px] uppercase leading-none tracking-wide text-title/90 transition-colors hover:text-title">
+            <a href={lc.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[length:var(--m-viewpf-fs,18px)] uppercase leading-none tracking-wide text-title/90 transition-colors hover:text-title">
               View profile <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
@@ -108,7 +108,7 @@ export default function Contact({ isFirstLoad }) {
           </p>
         </section>
 
-        <div className="mt-2 space-y-3 border-t border-title/15 pt-4 text-[22px]">
+        <div className="mt-2 space-y-3 border-t border-title/15 pt-4 text-[length:var(--m-email-fs,22px)]">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className={labelClass}>GitHub:</span>
             <a href={CONTACT.github.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-title transition-colors hover:text-accent">

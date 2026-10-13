@@ -50,8 +50,8 @@ export default function Profile({ isFirstLoad }) {
             <EmailRow email={PROFILE.email} />
           </div>
 
-          <div className="mt-2 flex flex-wrap items-center gap-12">
-            <p className="text-[28px] font-content leading-tight tracking-wide text-role">
+          <div className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-12">
+            <p className="text-[length:var(--m-role-fs,28px)] font-content leading-tight tracking-wide text-role">
               {PROFILE.role}
             </p>
             <a href={PROFILE.links.cv} download className={linkMain}>
@@ -62,7 +62,7 @@ export default function Profile({ isFirstLoad }) {
           </div>
         </div>
 
-        <div className="mt-4 mr-4 space-y-4 font-special font-[500] leading-[1.8] tracking-wide text-[16px] text-muted/90">
+        <div className="mt-4 space-y-4 font-special font-[500] leading-[1.7] tracking-wide text-[14px] md:mr-4 md:leading-[1.8] md:text-[16px] text-muted/90">
           <p>{PROFILE.bio1}</p>
           <p>{PROFILE.bio2}</p>
         </div>
