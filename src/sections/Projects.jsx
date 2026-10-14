@@ -67,7 +67,13 @@ function ProjectItem({ project, index }) {
   }, [live]);
 
   return (
-    <li ref={itemRef} className="pj-item relative isolate snap-start" style={{ height: 'var(--pj-item-h)', marginBottom: 'var(--pj-gap)', '--i': index }}>
+    <li ref={itemRef} className="pj-item relative isolate snap-start"
+      style={{
+            minHeight: 'var(--pj-item-min-h)',
+            maxHeight: 'var(--pj-item-max-h)',
+            marginBottom: 'var(--pj-gap)', '--i': index
+          }}
+    >
       <div aria-hidden="true" onAnimationEnd={(e) => { if (live && e.target === e.currentTarget) setOrbit(true); }} className="pj-frame pointer-events-none absolute left-0 top-0 z-0 bg-card/80">
         {live && <span className="absolute inset-0 border-2 border-accent/30" />}
         {!(live && orbit) && (
@@ -81,23 +87,40 @@ function ProjectItem({ project, index }) {
       {live && orbit && size.w > 0 && <Orbit w={size.w} h={size.h} />}
 
       <div className="pj-in relative z-10 flex h-full flex-col gap-3 px-4 py-3 md:flex-row md:gap-6 md:px-5">
+        
+        {/*L */}
         <div className="mt-2 w-full shrink-0 md:w-[180px]">
           <ProjectImage project={project} />
-          <a href={project.repo} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-2 text-[20px] uppercase leading-none tracking-wide text-muted transition-colors hover:text-accent">
+          <a href={project.repo} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-2 text-[18px] uppercase leading-none tracking-wide text-muted transition-colors hover:text-accent">
             <FaGithub size={20} aria-hidden="true" /> Go repository
           </a>
-        </div>
-        <div className="flex min-w-0 flex-1 flex-col">
-          <h3 className="mt-1 text-[26px] leading-none text-title">{project.title}</h3>
-          <p className="mt-1 font-special md:line-clamp-5 text-[14px] tracking-wide leading-[1.6] text-muted">{project.desc}</p>
-          <div className="mt-auto flex flex-wrap gap-2 pt-2 pb-4">
+          
+          <div className="mt-3 mb-1 flex flex-wrap gap-1">
             {project.tech.map((t, k) => <BrokenTag key={t} variant={index + k}>{t}</BrokenTag>)}
           </div>
         </div>
+
+        {/* R */}
+        <div className="flex min-w-0 flex-1 flex-col pb-2">
+          <h3 className="mt-1 text-[22px] leading-none text-title">{project.title}</h3>
+
+          <ul className="mt-2 flex flex-col gap-1.5 font-special text-[14px] tracking-wide leading-[1.6] text-muted list-outside list-disc pl-4">
+            {Array.isArray(project.desc) ? (
+              project.desc.map((line, index) => (
+                <li key={index}>{line}</li>
+              ))
+            ) : (
+              <li>{project.desc}</li> 
+            )}
+          </ul>
+        </div>
+
       </div>
     </li>
   );
 }
+
+
 
 export default function Projects({ isFirstLoad }) {
   const [titleStart] = useState(() => (isFirstLoad ? 2000 : 0));

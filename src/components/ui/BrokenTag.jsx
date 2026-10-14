@@ -22,7 +22,7 @@ export default function BrokenTag({ children, variant = 0 }) {
       </span>
 
       <span
-        className="relative whitespace-nowrap font-content text-[17px] leading-none text-content"
+        className="relative whitespace-nowrap font-content text-[15px] leading-none text-content"
         style={{ paddingLeft: 8, paddingRight: 20 }}
       >
         {children}

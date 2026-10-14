@@ -27,24 +27,37 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
-    title: 'Music Therapy',
-    desc: 'Psychological consultation system and automatic emotional navigation with music, is architected based on the Weighted Euclidean Distance algorithm that combines the ISO principle in music and Large Language Models (LLMs).',
-    tech: ['Python', 'Django REST', 'React', 'PostgreSQL', 'Gemini API'],
+    title: 'MindMelody - Music Therapy',
+    desc: [
+      'Built a full-stack psychological therapy platform (React, Django, PostgreSQL) utilizing DASS-21 clinical assessments to quantify user mental states.',
+      'Engineered a Weighted Euclidean Distance algorithm in Python to process 50,000+ tracks, generating therapeutic music trajectories (ISO-principle).',
+      'Integrated Gemini API with Static RAG architecture to develop a Cognitive Behavioral Therapy (CBT) chatbot with an implicit feedback loop.',
+      'Implemented strict safety guardrails, achieving high accuracy in detecting self-harm intents to trigger emergency SOS protocols.'
+    ],
+    tech: ['React', 'Django', 'PostgreSQL', 'Gemini API', 'TailwindCSS'],
     image: '/projects/music-therapy.png',
     live: 'https://music-therapy-project.vercel.app/',
     repo: 'https://github.com/sleepy1009/MusicTherapyProject',
   },
   {
     title: 'MES-APS',
-    desc: 'Production scheduling algorithm with simple constraints. Currently working on UI features.',
+    desc: [
+      'Designed a production scheduling algorithm with simple constraints.',
+      'Currently focusing on developing and integrating User Interface features to enhance system usability.'
+    ],
     tech: ['C++', 'Node.js', 'JavaScript', 'PostgreSQL', 'APS algorithm'],
     image: '/projects/mes-aps.png',
     live: '',
     repo: 'https://github.com/sleepy1009/mes-aps',
   },
   {
-    title: 'Recipe Recommendation System',
-    desc: 'Recommendation system for recipes, built with Flask and React, featuring a personalized recommendation algorithm based on user preferences and order history.',
+    title: 'NutriPlan: Data-Driven Diet Recommendation',
+    desc: [
+      'Developed a full-stack health-tech platform (React, Flask, SQL Server) to generate personalized dietary plans aimed at improving life expectancy and overall health.',
+      'Implemented nutritional algorithms utilizing the Mifflin-St Jeor equation to accurately calculate users\' BMI, BMR, and TDEE, dynamically adjusting caloric targets based on weight goals.',
+      'Engineered a recommendation engine that queries a comprehensive food database (USDA) to allocate precise macronutrient (Protein, Carbs, Fat) and micronutrient ratios.',
+      'Built secure user authentication using JWT and developed features for users to track, customize, and save daily meal plans aligned with their metabolic profiles.'
+    ],
     tech: ['Python', 'Flask', 'React', 'SQL Server'],
     image: '/projects/food-app.png',
     live: '',

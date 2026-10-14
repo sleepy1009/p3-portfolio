@@ -209,8 +209,11 @@ body {
 
 /* 10 */
 :root {
-  --pj-item-h: 240px;
+  --pj-item-min-h: 240px;
+  --pj-item-max-h: 440px;
+
   --pj-list-h: 480px;
+
   --pj-peek: 80px;
   --pj-gap: 18px;
   --pj-frame-dur: 0.5s;
@@ -361,8 +364,10 @@ a, button, [role='button'], .cursor-pointer, input {
 /* Projects / Certificates */
 @media (max-width: 767.98px) {
   :root {
-    --pj-item-h: auto;
-    --pj-list-h: auto;
+    --pj-item-min-h: auto;
+    --pj-item-max-h: none; 
+    
+    --pj-list-h: auto; 
     --pj-peek: 0px;
 
     --ct-item-h: 100px;
