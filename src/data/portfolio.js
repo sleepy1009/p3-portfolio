@@ -35,7 +35,7 @@ export const PROJECTS = [
       'Implemented strict safety guardrails, achieving high accuracy in detecting self-harm intents to trigger emergency SOS protocols.'
     ],
     tech: ['React', 'Django', 'PostgreSQL', 'Gemini API', 'TailwindCSS'],
-    image: '/projects/music-therapy.png',
+    image: '/projects/mind-melody.png',
     live: 'https://music-therapy-project.vercel.app/',
     repo: 'https://github.com/sleepy1009/MusicTherapyProject',
   },
