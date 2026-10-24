@@ -40,20 +40,22 @@ export const PROJECTS = [
     repo: 'https://github.com/sleepy1009/MusicTherapyProject',
   },
   {
-    title: 'MES-APS',
+    title: 'MES-APS - Production Scheduling System',
     desc: [
-      'Designed a production scheduling algorithm with simple constraints.',
-      'Currently focusing on developing and integrating User Interface features to enhance system usability.'
+      'Built, tested and deployed end-to-end an MES-style scheduling system; schedules them under release/due dates, priorities, setup times, machine efficiency and breakdowns, with a Gantt chart and OTD, tardiness, utilization and bottleneck KPIs.',
+      'Designed an PostgreSQL schema and a Node.js REST API; ran the C++17 scheduler in an N-API worker so the event loop is never blocked (about 0.55 s per run locally).',
+      'Implemented a genetic algorithm reaching best-known solutions on 16/20 Lawrence benchmarks (best of 50 seeded runs); on a congested 10-order test it had 0 late orders vs.\ 3 (FIFO) and 2 (EDD) simple baselines.',
+      'Added rescheduling at time \textit{T} after a machine breakdown.'
     ],
-    tech: ['C++', 'Node.js', 'JavaScript', 'PostgreSQL', 'APS algorithm'],
+    tech: ['C++17', 'Node.js', 'React', 'PostgreSQL'],
     image: '/projects/mes-aps.png',
-    live: '',
+    live: 'https://mes-aps-rosy.vercel.app/',
     repo: 'https://github.com/sleepy1009/mes-aps',
   },
   {
-    title: 'NutriPlan: Data-Driven Diet Recommendation',
+    title: 'NutriPlan - Data-Driven Diet Recommendation',
     desc: [
-      'Developed a full-stack health-tech platform (React, Flask, SQL Server) to generate personalized dietary plans aimed at improving life expectancy and overall health.',
+      'Developed a full-stack health-tech platform to generate personalized dietary plans aimed at improving life expectancy and overall health.',
       'Implemented nutritional algorithms utilizing the Mifflin-St Jeor equation to accurately calculate users\' BMI, BMR, and TDEE, dynamically adjusting caloric targets based on weight goals.',
       'Engineered a recommendation engine that queries a comprehensive food database (USDA) to allocate precise macronutrient (Protein, Carbs, Fat) and micronutrient ratios.',
       'Built secure user authentication using JWT and developed features for users to track, customize, and save daily meal plans aligned with their metabolic profiles.'
