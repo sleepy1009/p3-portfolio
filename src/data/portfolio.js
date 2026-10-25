@@ -14,7 +14,7 @@ export const PROFILE = {
   email: 'cuongpq2004.it@gmail.com',
 
   links: {
-    cv: '/cv.pdf', // public/cv.pdf
+    cv: '/PhamQuocCuong_SoftwareEngineer_Resume.pdf', // public/cv.pdf
     github: 'https://github.com/sleepy1009',
   },
 };
